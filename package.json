@@ -1,0 +1,16 @@
+{
+	"name": "rabbitmq",
+	"version": "1.0.0",
+	"description": "rabbitmq server",
+	"main": "src/server.js",
+	"scripts": {
+		"start": "node src/server.js",
+		"dev": "nodemon --ext js --watch src src/server.js",
+		"lint": "echo 'Add your linter here'"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"express": "^5.1.0"
+	}
+}
