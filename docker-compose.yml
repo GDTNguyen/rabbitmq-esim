@@ -21,3 +21,15 @@ services:
         environment:
             RABBITMQ_DEFAULT_USER: user
             RABBITMQ_DEFAULT_PASS: pass
+
+    cron:
+        image: node:20-alpine
+        container_name: node_cron
+        restart: always
+        volumes:
+            - /Users/johnngu/Documents/rabbitmq/scripts/crons:/usr/src/app
+        working_dir: /usr/src/app
+        command: >
+            sh -c "echo '0 * * * * node /usr/src/app/handle_schedule.mjs >> /usr/src/app/cron.log 2>&1' > /etc/crontabs/root && crond -f -d 8"
+        depends_on:
+            - rabbitmq
